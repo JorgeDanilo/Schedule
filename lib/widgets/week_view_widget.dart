@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_week_view/flutter_week_view.dart';
+import 'package:schedule/widgets/text.dart';
 
 class WeekViewWidget extends StatefulWidget {
   @override
@@ -80,6 +81,39 @@ class _WeekViewWidgetState extends State<WeekViewWidget> {
                   return Container(
                     height: height * 0.5,
                     width: width * 0.2,
+                    child: Column(
+                      children: <Widget>[
+                        Center(
+                          child: text("Nova Agenda", fontSize: 20, bold: true, color: Colors.purple[600]),
+                        ),
+                        SizedBox(height: 20,),
+                        TextFormField(
+                          decoration: InputDecoration(
+                             icon: Icon(Icons.title, color: Colors.purple[600],),
+                              labelText: 'Nome',
+                              labelStyle: TextStyle(color: Colors.purple[600]),
+                          ),
+                        ),
+                        TextFormField(
+                          keyboardType: TextInputType.multiline,
+                          maxLines: null,
+                          decoration: InputDecoration(
+                            icon: Icon(Icons.description, color: Colors.purple[600],),
+                            labelText: 'Descrição',
+                            labelStyle: TextStyle(color: Colors.purple[600]),
+                          ),
+                        ),
+                        SizedBox(height: 100,),
+                        Container(
+                          width: 300,
+                          child: RaisedButton(
+                            onPressed: () {},
+                            color: Colors.purple[600],
+                            child: text("Salvar", color: Colors.white),
+                          ),
+                        )
+                      ],
+                    ),
                   );
                 },
               ),
