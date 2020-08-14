@@ -24,8 +24,7 @@ class _WeekViewWidgetState extends State<WeekViewWidget> {
           IconButton(
             onPressed: () {
               setState(() {
-                var start = DateTime(now.year, now.month, now.day,
-                    Random().nextInt(24), Random().nextInt(60));
+                var start = DateTime(now.year, now.month, now.day, Random().nextInt(24), Random().nextInt(60));
                 events.add(
                   FlutterWeekViewEvent(
                       onTap: () => showSchedule(context),
@@ -45,10 +44,11 @@ class _WeekViewWidgetState extends State<WeekViewWidget> {
         ],
       ),
       body: WeekView(
-        userZoomable: true,
-        onHoursColumnTappedDown: (dateTime) {
-          print(dateTime);
-        },
+          userZoomable: true,
+          onHoursColumnTappedDown: (dateTime) {
+            print(dateTime);
+            showForm();
+          },
           initialTime: const HourMinute(hour: 7).atDate(DateTime.now()),
           dates: [
             date.subtract(const Duration(days: 1)),
@@ -61,5 +61,28 @@ class _WeekViewWidgetState extends State<WeekViewWidget> {
 
   showSchedule(BuildContext context) {
     print("checked here");
+    showForm();
+  }
+
+  void showForm() {
+    showDialog(
+        context: context,
+        builder: (_) => new AlertDialog(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(10.0),
+                ),
+              ),
+              content: Builder(
+                builder: (context) {
+                  var height = MediaQuery.of(context).size.height;
+                  var width = MediaQuery.of(context).size.width;
+                  return Container(
+                    height: height * 0.5,
+                    width: width * 0.2,
+                  );
+                },
+              ),
+            ));
   }
 }
