@@ -7,6 +7,7 @@ void main() => runApp(_FlutterWeekViewApp());
 class _FlutterWeekViewApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) => MaterialApp(
+    debugShowCheckedModeBanner: false,
     title: 'Schedule',
     initialRoute: '/',
     routes: {

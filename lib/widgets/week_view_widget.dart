@@ -17,7 +17,9 @@ class _WeekViewWidgetState extends State<WeekViewWidget> {
     DateTime date = DateTime(now.year, now.month, now.day);
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: const Text("Agenda"),
+        backgroundColor: Colors.purple[600],
         actions: <Widget>[
           IconButton(
             onPressed: () {
@@ -26,6 +28,8 @@ class _WeekViewWidgetState extends State<WeekViewWidget> {
                     Random().nextInt(24), Random().nextInt(60));
                 events.add(
                   FlutterWeekViewEvent(
+                      onTap: () => showSchedule(context),
+                      backgroundColor: Colors.purple[600],
                       title: "Event " + (events.length + 1).toString(),
                       start: start,
                       end: start.add(const Duration(hours: 1)),
@@ -41,10 +45,7 @@ class _WeekViewWidgetState extends State<WeekViewWidget> {
         ],
       ),
       body: WeekView(
-        style: WeekViewStyle(headerSize: 25, dayViewSeparatorColor: Colors.purple[600]),
-        onDayBarTappedDown: (date) {
-          print(date);
-        },
+        userZoomable: true,
         onHoursColumnTappedDown: (dateTime) {
           print(dateTime);
         },
@@ -58,7 +59,7 @@ class _WeekViewWidgetState extends State<WeekViewWidget> {
     );
   }
 
-  addHour(minute) {
-
+  showSchedule(BuildContext context) {
+    print("checked here");
   }
 }
